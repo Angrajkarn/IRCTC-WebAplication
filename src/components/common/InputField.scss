@@ -1,0 +1,78 @@
+$primary-color: #16213e;
+$secondary-color: #4caf50;
+$error-color: #e74c3c;
+$input-background: #f4f4f4;
+$text-color: #333;
+$label-color: #666;
+
+.input-field {
+  width: 100%;
+  margin-bottom: 1.5rem;
+
+  &__label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: $label-color;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    background-color: $input-background;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+
+    &:focus-within {
+      box-shadow: 0 0 0 3px lighten($secondary-color, 40%);
+    }
+  }
+
+  &__icon {
+    color: $label-color;
+    margin-left: 12px;
+    font-size: 1.2rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    padding-left: calc(1rem + 24px);
+    border: none;
+    border-radius: 4px;
+    background-color: transparent;
+    color: $text-color;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: darken($label-color, 10%);
+    }
+
+    &:focus {
+      background-color: lighten($input-background, 5%);
+    }
+  }
+
+  &__error {
+    margin-top: 0.5rem;
+    color: $error-color;
+    font-size: 0.85rem;
+  }
+
+  &--error {
+    .input-field__wrapper {
+      border: 1px solid $error-color;
+    }
+
+    .input-field__label,
+    .input-field__icon {
+      color: $error-color;
+    }
+  }
+}

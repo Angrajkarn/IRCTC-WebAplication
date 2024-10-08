@@ -1,0 +1,163 @@
+$primary-color: #16213e; // Navbar color
+$secondary-color: #3498db; // Accent color
+$hover-color: #2980b9; // Darker shade for hover
+$text-color: #ecf0f1; // Text color
+$border-color: #34495e; // Border color
+$placeholder-image: 'https://via.placeholder.com/80'; // Placeholder for avatar
+
+.profile-container {
+  position: relative;
+}
+
+.profile-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 300px; // Increased width for better visibility
+  background: $primary-color;
+  color: $text-color;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+  transform: translateX(100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 1000;
+  border-left: 1px solid $border-color; // Subtle border
+  overflow-y: auto;
+  scrollbar-width:thin; // For Firefox
+  scrollbar-color: #3498db #2c3e50;
+}
+
+.profile-sidebar.open {
+  transform: translateX(0);
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.5); // Enhanced shadow when open
+}
+
+.profile-close-btn {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: $text-color;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.profile-close-btn:hover {
+  color: $secondary-color; // Accent color on hover
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid $border-color;
+  background: lighten($primary-color, 5%); // Slightly lighter background for the header
+}
+
+.profile-avatar {
+  position: relative;
+  margin-right: 15px;
+}
+
+.profile-avatar img {
+  border-radius: 50%;
+  width: 80px; // Slightly larger avatar
+  height: 80px;
+  object-fit: cover;
+  border: 3px solid $secondary-color; // Border around avatar for emphasis
+}
+
+.photo-upload-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: $secondary-color;
+  color: $text-color;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px; // Slightly larger font for better readability
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.photo-upload-btn:hover {
+  background-color: $hover-color;
+  transform: scale(1.05); // Slightly enlarge on hover
+}
+
+.profile-info {
+  margin-right: 15px;
+  flex: 1;
+  color: $text-color; 
+  button{
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #3498db; // Adjust to match your navbar color
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  outline: none;
+  text-decoration: none;
+   a{
+    color: white;
+    text-decoration: none;
+   }
+  
+  &:hover {
+    background-color: #2980b9; // Adjust to match your navbar color
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background-color: #1f5c8d; // Slightly darker shade for active state
+    transform: scale(0.98);
+  }
+
+  }
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 20px; // Larger font size for the name
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.profile-info p {
+  margin: 5px 0;
+  color: lighten($text-color, 30%); // Lighter color for secondary text
+}
+
+.profile-menu {
+  padding: 20px;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: $text-color;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 10px;
+  border-radius: 5px; // Rounded corners for menu items
+}
+
+.profile-menu-item:hover {
+  background-color: $hover-color; // Background color change on hover
+  color: $text-color;
+}
+
+.profile-menu-item span {
+  margin-left: 10px;
+}

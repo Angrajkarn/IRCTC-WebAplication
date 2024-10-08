@@ -1,0 +1,28 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form.vertical .form-item {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-item {
+    &__label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+  
+    &__input-wrapper {
+      position: relative;
+    }
+  
+    &__error {
+      color: red;
+      margin-top: 5px;
+      font-size: 12px;
+    }
+  }
+  

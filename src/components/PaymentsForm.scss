@@ -1,0 +1,523 @@
+.payment-form {
+  display: grid;
+  gap: 20px;
+  padding: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  background-color: #f0f2f5;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  .fare-summary{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+
+    h2, h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .fare-details {
+      .fare-item, .fare-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: 1rem;
+        color: #555;
+
+        &.fare-total {
+          font-weight: bold;
+          border-top: 2px solid #ddd;
+          padding-top: 15px;
+          color: #222;
+        }
+      }
+    }
+  }
+  .payment-options, .upi-section, .card-form, .emi-form, .netbanking-form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+
+    h2, h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: #333;
+    }
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .payment-method {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      
+      &.active, &:hover {
+        border-color: #007bff;
+        background-color: #e7f1ff;
+      }
+
+      .icon {
+        margin-right: 10px;
+        color: #007bff;
+        font-size: 1.5rem;
+      }
+
+      span {
+        font-size: 1rem;
+        color: #495057;
+        font-weight: bold;
+      }
+      p{
+        color: #495057;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .upi-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .scan-pay {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      ol {
+        padding-left: 20px;
+        margin-bottom: 15px;
+        color: #495057;
+        font-size: 0.9rem;
+
+        li {
+          margin-bottom: 5px;
+        }
+      }
+
+      .img-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .img-scan {
+          img {
+            height: 20px;
+          }
+        }
+      }
+
+      .generate-qr-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        
+
+        .qr-container {
+          position: relative;
+          width: 150px;
+          height: 150px;
+          margin: auto;
+          border: 1px solid #878686;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .qr-code {
+            opacity: 0.2;
+            transition: opacity 0.5s ease-in-out;
+            width: 100%;
+            height: 100%;
+          }
+          .qr-code.visible {
+            opacity: 1;
+          }
+          .generate-qr {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff6600;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease-in-out;
+            z-index: 1;
+            border-radius: 4px;
+        
+            &:hover {
+              background-color: #0056b3;
+            }
+          }
+          .generate-qr.hidden {
+            opacity: 0;
+            pointer-events: none;
+          }
+          .timer {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #ff6600;
+            width: 100%;
+            padding: 1px 3px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: pulse 1.5s infinite;
+            text-align: center;
+            margin-top: 1px;
+          }
+      }
+        .img-upi {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .int {
+      background-color: rgb(193, 243, 181);
+      border: 2px solid green;
+      border-radius: 7px;
+      margin: 2px;
+      padding: 4px;
+      p {
+        margin: 2px;
+      }
+    }
+
+    .manual-upi {
+      h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+        color: #333;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        border: 2px solid #ddd;
+        font-size: 1rem;
+        color: #333;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+        }
+      }
+      .pay-button {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e65c00;
+        }
+      }
+    }
+  }
+
+  .card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h3 {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    form {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label {
+          font-size: 0.9rem;
+          margin-bottom: 5px;
+          color: #555;
+        }
+
+        input {
+          padding: 12px;
+          border-radius: 8px;
+          border: 2px solid #ddd;
+          font-size: 1rem;
+          color: #333;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+      }
+
+      .pay-button {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e65c00;
+        }
+      }
+    }
+  }
+
+  .emi-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h3 {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    form {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label {
+          font-size: 0.9rem;
+          margin-bottom: 5px;
+          color: #555;
+        }
+
+        select {
+          padding: 12px;
+          border-radius: 8px;
+          border: 2px solid #ddd;
+          font-size: 1rem;
+          color: #333;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+      }
+
+      .pay-button {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e65c00;
+        }
+      }
+    }
+  }
+
+  .netbanking-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    h3 {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    form {
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label {
+          font-size: 0.9rem;
+          margin-bottom: 5px;
+          color: #555;
+        }
+
+        select {
+          padding: 12px;
+          border-radius: 8px;
+          border: 2px solid #ddd;
+          font-size: 1rem;
+          color: #333;
+          transition: border-color 0.3s ease;
+
+          &:focus {
+            border-color: #007bff;
+            outline: none;
+          }
+        }
+      }
+
+      .pay-button {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background-color: #e65c00;
+        }
+      }
+    }
+  }
+}
+
+.ticket-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 380px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial, sans-serif';
+  color: #333;
+  margin-top: 45px;
+  border: 2px solid  black;
+
+
+  .ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .train-info {
+      display: flex;
+      align-items: center;
+
+      .train-number {
+        font-size: 16px;
+        font-weight: bold;
+        color: #1a73e8;
+        display: flex;
+        align-items: center;
+
+        .icon-train {
+          margin-right: 8px;
+        }
+      }
+
+      .pnr-status {
+        background-color: #f4ebe4;
+        color: #d9480f;
+        font-size: 12px;
+        padding: 2px 8px;
+        border-radius: 15px;
+        margin-left: 50px;
+      }
+    }
+  }
+
+  .timing-info {
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 5px 0;
+      color: #333;
+    }
+
+    p {
+      font-size: 14px;
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .berth-info {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      color: #999;
+
+      .icon-info {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .ticket-body {
+    margin-top: 20px;
+
+    h4 {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .travellers-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        font-size: 14px;
+        color: #333;
+      }
+    }
+  }
+
+  .ticket-footer {
+    margin-top: 20px;
+    text-align: center;
+    
+    p {
+      font-size: 13px;
+      color: #777;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .icon-partner {
+        margin-right: 8px;
+      }
+    }
+  }
+}

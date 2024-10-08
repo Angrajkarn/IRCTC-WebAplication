@@ -1,0 +1,74 @@
+.search-result-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.results-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.result-card {
+  flex: 1 1 calc(50% - 16px);
+  max-width: calc(50% - 16px);
+  margin-bottom: 16px;
+}
+
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.train-icon {
+  font-size: 24px;
+  margin-right: 8px;
+}
+
+.card-body {
+  padding: 16px;
+}
+
+.card-detail {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.detail-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.book-button {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .result-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}

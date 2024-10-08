@@ -1,0 +1,436 @@
+$selected-seat-bg: #fee4d4;
+$selected-seat-text: #006400;
+$selected-seat-detail: #004d00;
+$default-bg: #ccc;
+$default-text: #333;
+$enabled-bg: #28a745;
+$enabled-text: #fff;
+$disabled-bg: #a5c7a1;
+$disabled-text: #666;
+$hover-bg: #f0e3e3;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+.train-search-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.search-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #1a2cb9;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    position: relative;
+    height: 110px;
+
+    .station-inputs {
+        flex: 2;
+        display: flex;
+        gap: 1rem;
+
+        .station-input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    }
+
+    .arrow {
+        font-size: 1.5rem;
+        align-self: center;
+    }
+
+    .date-picker input,
+    .class-selection select {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    .modify-search {
+        flex-shrink: 0;
+
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: #4caf50;
+            border: none;
+            border-radius: 5px;
+            color: #ffffff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
+}
+
+.train-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: Body, Quicksand, sans-serif;
+    
+}
+
+
+.train-item {
+    background-color: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid rgb(71, 69, 69);
+
+    .train-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f2f5f0f7;
+        
+
+        .train-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            display: flex;
+            align-items: center;
+
+            svg {
+                margin-right: 0.5rem;
+                color: #007bff;
+            }
+
+            span {
+                font-weight: normal;
+                color: #6c757d;
+            }
+        }
+
+        .train-days {
+            font-size: 14px;
+            color: #222425;
+            align-items: center;
+        }
+    }
+
+    .train-details {
+        position: relative;
+        .train-timing {
+            .from-to-time {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+
+                .departure-arrival-time,
+                .to-station {
+                    flex: -1;
+                }
+
+                .from-station {
+                    text-align: left;
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: #333;
+                }
+
+                .to-station {
+                    text-align: right;
+                    font-size: 20px;
+                    font-weight: 500;
+                    color: #333;
+                }
+
+                .departure-arrival-time {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 1rem;
+                    
+
+                    span {
+                        font-size: 20px;
+                        color: #495057;
+                        font-weight: bolder;
+                        
+                    }
+                }
+
+                .train-duration {
+                    position: absolute;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    text-align: center;
+                    font-size: 18px;
+                    color: #495057;
+                    white-space: nowrap; // Prevents the duration text from wrapping
+
+                    & {
+                        display: block;
+                    }
+                }
+            }
+        }
+
+        .train-classes {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            margin-top: 29px;
+            cursor: pointer;
+            .train-class {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                background-color: #e9ecef;
+                padding: 1rem;
+                border-radius: 10px;
+                font-size: 17px;
+                color: #333;
+                width: 100%;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                height: 125px;
+                font-weight: bolder;
+                border: 1px solid #ccc;
+                transition: background-color 0.3s, color 0.3s;
+                margin: 5px;
+                span {
+                    margin-bottom: 0.7rem; /* Adds spacing between each text element */
+                    font-weight: bold;
+                }
+                &.selected {
+                    background-color: $selected-seat-bg;
+                    color: $selected-seat-text;
+                    border: 1px solid #beab9f;
+                    background-image: initial;
+        
+                .seats-available,
+                .fare {
+                    margin-bottom: 0.5rem; /* Adds spacing between these elements */
+                    font-weight: bold;
+                   
+                }
+            }
+                .seats-available{
+                    color: #28a745;
+                }
+        
+                svg {
+                    color: #6c757d;
+                    align-self: flex-end; /* Aligns the icon to the right end */
+                }
+                &:hover {
+                    background-color: $hover-bg;
+                }
+            }
+        }
+        
+    }
+
+    .book-now {
+        text-align: left;
+
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: $default-bg;
+            border: none;
+            color: $default-text;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            &.enabled {
+                background-color: $enabled-bg;
+                color: $enabled-text;
+            }
+            &.disabled {
+                background-color: $disabled-bg;
+                color: $disabled-text;
+            }
+        }
+    }
+}
+.results-header:hover{
+    border: 1px solid black;
+}
+.results-header {
+    border-top: .5px solid black;
+    border-radius: 6px;
+
+    h2 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+    }
+}
+.button-container {
+    display: flex;
+    justify-content: space-between;
+
+
+    .left-buttons, .right-buttons {
+        display: flex;
+        gap: 1rem;
+
+        button {
+            padding: 0.75rem 1.5rem;
+            background-color: #1a2cb9;
+            border: 1px solid rgb(15, 139, 15);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+
+            .icon {
+                font-size: 1.2rem;
+                margin-right: 0.5rem;
+            }
+
+            &.last-day .icon {
+                margin-right: 0;
+                margin-left: 0.5rem;
+            }
+        }
+    }
+}
+
+.flexible-date {
+    display: flex;
+    flex-direction: row; /* Arrange checkboxes vertically */
+    position: relative; /* Ensure it's positioned correctly */
+    font-family: "Baskervville SC", serif;
+    
+    label {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem; /* Space between checkbox and label */
+        font-size: 16px; /* Adjust font size */
+        color: #ede8e8; /* Darker color for better contrast */
+        font-weight: bold; /* Adjust font weight for readability */
+        margin-right: 3rem; /* Space between each label */
+        cursor: pointer; /* Change cursor on hover */
+        
+
+        input[type="checkbox"] {
+            accent-color: #007bff; /* Change checkbox color */
+            cursor: pointer; /* Change cursor on hover */
+        }
+    }
+}
+
+
+// Media Queries for Responsiveness
+@media (max-width: 1024px) {
+    .train-search-container {
+        .search-header {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .station-inputs,
+            .date-picker,
+            .class-selection,
+            .modify-search {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .modify-search {
+                text-align: center;
+            }
+        }
+
+        .train-results {
+            .train-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .from-to-time {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .from-station,
+        .to-station,
+        .departure-arrival-time,
+        .train-duration {
+            text-align: left;
+            position: static;
+            transform: none;
+            margin-top: 0.5rem;
+        }
+    }
+
+    .search-header {
+        .station-inputs {
+            flex-direction: column;
+
+            .station-input {
+                width: 100%;
+            }
+
+            .arrow {
+                display: none;
+            }
+        }
+
+        .date-picker,
+        .class-selection {
+            width: 100%;
+        }
+    }
+}
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f9f9f9;
+
+    .spinner {
+        font-size: 2rem;
+        color: #007bff;
+        animation: spin 1s linear infinite;
+    }
+
+    p {
+        margin-top: 1rem;
+        font-size: 1.2rem;
+        color: #333;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+}

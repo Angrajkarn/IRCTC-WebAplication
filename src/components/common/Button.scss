@@ -1,0 +1,93 @@
+$primary-color: #4caf50;
+$secondary-color: #16213e;
+$danger-color: #e74c3c;
+$disabled-color: #d3d3d3;
+$button-text-color: #ffffff;
+$hover-primary: darken($primary-color, 10%);
+$hover-secondary: darken($secondary-color, 10%);
+$hover-danger: darken($danger-color, 10%);
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  background-color: $primary-color;
+  color: $button-text-color;
+
+  &:hover {
+    background-color: $hover-primary;
+  }
+
+  &:focus {
+    outline: 3px solid $primary-color;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    background-color: $disabled-color;
+    color: darken($button-text-color, 30%);
+    cursor: not-allowed;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  &--primary {
+    background-color: $primary-color;
+
+    &:hover {
+      background-color: $hover-primary;
+    }
+  }
+
+  &--secondary {
+    background-color: $secondary-color;
+
+    &:hover {
+      background-color: $hover-secondary;
+    }
+  }
+
+  &--danger {
+    background-color: $danger-color;
+
+    &:hover {
+      background-color: $hover-danger;
+    }
+  }
+
+  &--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  &--medium {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  &--large {
+    padding: 1rem 2rem;
+    font-size: 1.125rem;
+  }
+
+  &--disabled {
+    background-color: $disabled-color;
+    color: darken($button-text-color, 30%);
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $disabled-color;
+    }
+  }
+}

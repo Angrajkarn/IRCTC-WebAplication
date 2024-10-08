@@ -1,0 +1,242 @@
+$primary-color: #16213e;
+$secondary-color: #4caf50;
+$gradient-background: linear-gradient(135deg, #1a1a2e, #16213e);
+$text-color: #ffffff;
+
+.navbar {
+  background: $gradient-background;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    color: $text-color;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $secondary-color;
+    }
+
+    &-icon {
+      margin-right: 8px;
+      font-size: 1.8rem;
+    }
+  }
+
+  &__toggle {
+    display: none;
+    color: $text-color;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    transition: all 0.5s ease;
+
+    @media screen and (max-width: 960px) {
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 70px;
+      left: -100%;
+      background: $gradient-background;
+      transition: all 0.5s ease;
+      z-index: 1;
+
+      &.active {
+        left: 0;
+      }
+    }
+  }
+
+  &__item {
+    position: relative;
+
+    &--button {
+      @media screen and (max-width: 960px) {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__links {
+    color: $text-color;
+    padding: 0.5rem 1.5rem;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: $secondary-color;
+      border-bottom: 3px solid $secondary-color;
+    }
+
+    &.navbar__dropdown-toggle {
+      cursor: pointer;
+    }
+  }
+
+  &__links--button {
+    background-color: $secondary-color;
+    padding: 10px 20px;
+    border-radius: 4px;
+    color: $text-color;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: darken($secondary-color, 10%);
+      transform: translateY(-2px);
+    }
+
+    &--outline {
+      background: transparent;
+      border: 1px solid $secondary-color;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $text-color;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &__profile {
+    color: $text-color;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $secondary-color;
+    }
+
+    &-icon {
+      margin-left: 8px;
+    }
+  }
+
+  .navbar__dropdown-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background-color: rgba(22, 33, 62, 0.95);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    z-index: -1;
+
+    &.active {
+      max-height: 200px;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .navbar__dropdown-item {
+      padding: 10px 20px;
+      background: $primary-color;
+      transition: background 0.3s ease;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+
+      .navbar__dropdown-link {
+        color: $text-color;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+  .navbar__profile {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar__profile-icon {
+    font-size: 24px;
+  }
+  
+  @media screen and (max-width: 960px) {
+    &__toggle {
+      display: block;
+    }
+
+    &__menu {
+      flex-direction: column;
+      width: 100%;
+      height: 100vh;
+      position: absolute;
+      top: 70px;
+      left: -120%;
+      transition: all 0.5s ease;
+
+      &.active {
+        left: 0;
+      }
+    }
+
+    &__item {
+      width: 100%;
+    }
+
+    &__links {
+      padding: 2rem;
+      width: 100%;
+      display: block;
+      text-align: center;
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $text-color;
+        border-bottom: none;
+      }
+    }
+
+    .navbar__dropdown-menu {
+      position: static;
+      background-color: $primary-color;
+      box-shadow: none;
+      max-height: none;
+    }
+  }
+}

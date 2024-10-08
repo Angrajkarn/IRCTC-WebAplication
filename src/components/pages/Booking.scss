@@ -1,0 +1,112 @@
+// @import 'antd/dist/antd.css';
+
+$primary-color: #4caf50;
+$secondary-color: #16213e;
+$accent-color: #e74c3c;
+$background-color: #f5f5f5;
+$text-color: #333;
+$button-text-color: #ffffff;
+$border-radius: 8px;
+$transition-speed: 0.3s;
+
+.booking {
+  background-color: $background-color;
+  padding: 2rem 1rem;
+  border-radius: $border-radius;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 2rem auto;
+  animation: fadeIn 0.8s ease-in-out;
+
+  &__title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: $secondary-color;
+    animation: slideIn 0.6s ease-out;
+  }
+
+  &__form {
+    display: grid;
+    gap: 1.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__input-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: $secondary-color;
+    font-weight: 600;
+  }
+
+  &__icon {
+    margin-right: 0.5rem;
+    color: $primary-color;
+    vertical-align: middle;
+  }
+
+  &__input,
+  &__datepicker {
+    padding: 0.75rem;
+    border: 1px solid darken($background-color, 10%);
+    border-radius: $border-radius;
+    font-size: 1rem;
+    color: $text-color;
+    transition: border-color $transition-speed ease;
+
+    &:focus,
+    &:hover {
+      border-color: $primary-color;
+      outline: none;
+      box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+    }
+  }
+
+  &__button {
+    grid-column: span 2;
+    background-color: $accent-color;
+    color: $button-text-color;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background-color $transition-speed ease, transform $transition-speed ease;
+
+    &:hover {
+      background-color: darken($accent-color, 10%);
+      transform: scale(1.05);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
